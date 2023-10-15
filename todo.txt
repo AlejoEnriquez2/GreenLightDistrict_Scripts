@@ -1,2 +1,4 @@
 - Check that the virtual microphone and virtual camera loops properly
-- 
+- Video of virtual camera is not looping
+- Script.py is again inside the skype folder
+- Finish configuring slack clicks

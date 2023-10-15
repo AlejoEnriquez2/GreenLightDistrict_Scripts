@@ -34,17 +34,25 @@ skypeShareScreenCoordinates = []
 
 # SLACK
 slackStartMeetingPath = "csv/Slack/slackStartMeeting.csv"
-slackScreenSharingPath = "csv/Skype/slackScreenSharing.csv"
+slackScreenSharingPath = "csv/Slack/slackScreenSharing.csv"
 slackOpenPosition = Coordinate(36,334)
-slackMicPosition = Coordinate(135,1053)
-slackCameraPosition = Coordinate(528,1044)
-slackStopMeeting = Coordinate(607,1048)
-slackClosePosition = Coordinate(977,46)
+slackMicPosition = Coordinate(101,1054)
+slackCameraPosition = Coordinate(135,1054)
+slackStopMeeting = Coordinate(244,1058)
+slackClosePosition = Coordinate(972,46)
 slackStartMeetingCoordinates = []
 slackShareScreenCoordinates = []
 
 # DISCORD
-
+discordStartMeetingPath = "csv/Discord/discordStartMeeting.csv"
+discordScreenSharingPath = "csv/Discord/discordScreenSharing.csv"
+discordOpenPosition = Coordinate(36,334)
+discordMicPosition = Coordinate(101,1054)
+discordCameraPosition = Coordinate(135,1054)
+discordStopMeeting = Coordinate(244,1058)
+discordClosePosition = Coordinate(972,46)
+discordStartMeetingCoordinates = []
+discordShareScreenCoordinates = []
 
 
 
