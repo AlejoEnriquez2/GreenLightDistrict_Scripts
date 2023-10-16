@@ -1,0 +1,3 @@
+Use a dummy bot with screen coordinate clicks
+Use pyautogui to detect image (not accurate)
+Use OpenCV to create a image detector, train with button image and detect it for clicking it (preferred)
