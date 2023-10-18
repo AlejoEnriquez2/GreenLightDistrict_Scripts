@@ -28,7 +28,7 @@ else
     exit 1
 fi
 
-time=$((t * 5))
+time=$(((t * 5)+2))
 echo "Measuring $app_name for $time seconds"
 
 sudo timeout -s SIGINT "$time" powerjoular -l -a "$app_name" -f "powerjoular.csv" &

@@ -163,13 +163,10 @@ def micDiscordClick():
 
 def startMeasurement(iteration):
     startTime = time.time()
-    print("Start measurement... " + str(startTime))
-    
-
-    print(subprocess.run([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True))
-    
+    print("Start measurement... " + str(startTime))    
+    print(subprocess.run([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True))    
     time.sleep(iteration.t*5)
-    endTime = time.time()
+    endTime = time.time() - startTime
     print("Measurement finished... " + str(endTime))
 
 def skype(iteration):  
