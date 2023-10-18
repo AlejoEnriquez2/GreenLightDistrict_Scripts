@@ -214,7 +214,6 @@ def discord(iteration):
         shareDiscordScreen()    
 
     startMeasurement(iteration)
-    micDiscordClick()
     stopDiscordMeeting()
     closeDiscord()
 
