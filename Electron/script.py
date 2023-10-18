@@ -168,7 +168,7 @@ def startMeasurement(iteration):
 
     print(subprocess.run([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True))
     
-    time.sleep(iteration.t*60)
+    time.sleep(iteration.t*5)
     endTime = time.time()
     print("Measurement finished... " + str(endTime))
 
