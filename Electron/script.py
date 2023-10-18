@@ -1,6 +1,7 @@
 import pyautogui
 import time
 import csv
+import subprocess
 
 class Coordinate:
     def __init__(self, x, y):
@@ -160,7 +161,19 @@ def micDiscordClick():
     click(discordMicPosition.X, discordMicPosition.Y, 0)
 
 
+def startMeasurement(iteration):
+    startTime = time.time()
+    print("Start measurement... " + str(startTime))
+    
+
+    print(subprocess.run([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True))
+    
+    time.sleep(iteration.t*60)
+    endTime = time.time()
+    print("Measurement finished... " + str(endTime))
+
 def skype(iteration):  
+    # startMeasurement(iteration)
     openSkype()
     startSkypeMeeting()
     if(iteration.mic == 0):
@@ -170,15 +183,12 @@ def skype(iteration):
     if(iteration.ss == 1):
         shareSkypeScreen()
 
-    startTime = time.time()
-    print("Start measurement... " + str(startTime))
-    time.sleep(iteration.t*5)
-    endTime = time.time()
-    print("Measurement finished... " + str(endTime))
+    startMeasurement(iteration)
     stopSkypeMeeting()
     closeSkype()  
 
 def slack(iteration):
+    # startMeasurement(iteration)
     openSlack()
     startSlackMeeting()
     if(iteration.mic == 0):
@@ -188,15 +198,12 @@ def slack(iteration):
     if(iteration.ss == 1):
         shareSlackScreen()
 
-    startTime = time.time()
-    print("Start measurement... " + str(startTime))
-    time.sleep(iteration.t*5)
-    endTime = startTime - time.time() 
-    print("Measurement finished... " + str(endTime))
+    startMeasurement(iteration)
     stopSlackMeeting()
     closeSlack()
 
 def discord(iteration):
+    # startMeasurement(iteration)
     openDiscord()
     startDiscordMeeting()
     if(iteration.mic == 0):
@@ -206,11 +213,7 @@ def discord(iteration):
     if(iteration.ss == 1):
         shareDiscordScreen()    
 
-    startTime = time.time()
-    print("Start measurement... " + str(startTime))
-    time.sleep(iteration.t*5)
-    endTime = startTime - time.time() 
-    print("Measurement finished... " + str(endTime))
+    startMeasurement(iteration)
     micDiscordClick()
     stopDiscordMeeting()
     closeDiscord()
