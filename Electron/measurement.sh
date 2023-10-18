@@ -28,10 +28,10 @@ else
     exit 1
 fi
 
-time=$((t * 60))
+time=$((t * 5))
 echo "Measuring $app_name for $time seconds"
 
-sudo powerjoular -l -a "$app_name" -f "powerjoular.csv" &
+sudo timeout -s SIGINT "$time" powerjoular -l -a "$app_name" -f "powerjoular.csv" &
 
 exit 0
 
