@@ -102,7 +102,7 @@ def click(x,y,t):
     time.sleep(t)
 
 def openSkype():
-    click(skypeOpenPosition.X, skypeOpenPosition.Y, 8)
+    click(skypeOpenPosition.X, skypeOpenPosition.Y, 10)
 def closeSkype():
     click(skypeClosePosition.X, skypeClosePosition.Y, 4)
 
@@ -125,7 +125,7 @@ def startSlackMeeting():
         click(i.X, i.Y, 4) 
 def startDiscordMeeting():     
     for i in discordStartMeetingCoordinates:        
-        click(i.X, i.Y, 4) 
+        click(i.X, i.Y, 6) 
 
 def shareSkypeScreen():
     for i in skypeShareScreenCoordinates:
