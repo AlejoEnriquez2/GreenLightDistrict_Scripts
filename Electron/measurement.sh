@@ -34,13 +34,21 @@ interface=$(ip route | awk '/default/ {print $5}')
 time=$((t * 5))
 echo "Measuring $app_name for $time seconds"
 
+ps_time=$((time + SECONDS))
+
 touch tshark.pcap
 chmod o=rw tshark.pcap
+echo "timestamp,pid,%mem" > "ps.csv"
 
 
 sudo timeout -s SIGINT "$time" powerjoular -l -a "$app_name" -f "powerjoular.csv" &
 sudo tshark -i "$interface" -a duration:"$time" -w "tshark.pcap" &
-sudo ps -C "$app_name" -o pid,%cpu,%mem,start,time | tr -s ' ' ',' >> "ps.csv" &
+while [ $SECONDS -lt $ps_time ]; do
+    timestamp=$(date +"%Y-%m-%d %H:%M:%S")
+    sudo ps -C "$app_name" -o pid,%mem --no-headers | tr -s ' ' ',' | sed "s/^/$timestamp/" >> "ps.csv"
+    sleep 1
+done &
+
 
 exit 0
 
