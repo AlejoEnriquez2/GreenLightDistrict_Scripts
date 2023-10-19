@@ -166,7 +166,10 @@ def startMeasurement(iteration):
     print("Start measurement... " + str(startTime))    
     print(subprocess.run([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True))    
     time.sleep(iteration.t*5)
-    endTime = time.time() - startTime
+
+    print(subprocess.run([f"./aggregation.sh {iteration.mic}_{iteration.cam}_{iteration.ss}_{iteration.t}_{iteration.app}"], shell=True))
+    
+    endTime = time.time()
     print("Measurement finished... " + str(endTime))
 
 def skype(iteration):  
