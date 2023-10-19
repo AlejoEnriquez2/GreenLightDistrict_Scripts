@@ -166,13 +166,22 @@ def micDiscordClick():
 def startMeasurement(iteration):
     startTime = time.time()
     print("Start measurement... " + str(startTime))    
-    print(subprocess.run([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True))    
+    measure = subprocess.Popen([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True)
+    # print(subprocess.run([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True))    
     time.sleep(iteration.t*5)
 
-    print(subprocess.run([f"./aggregation.sh {iteration.mic}_{iteration.cam}_{iteration.ss}_{iteration.t}_{iteration.app}"], shell=True))
+    measure.wait()
+    measure.kill()
+
+    aggregate = subprocess.Popen([f"./aggregation.sh {iteration.mic}_{iteration.cam}_{iteration.ss}_{iteration.t}_{iteration.app}"], shell=True)
+    # print(subprocess.run([f"./aggregation.sh {iteration.mic}_{iteration.cam}_{iteration.ss}_{iteration.t}_{iteration.app}"], shell=True))
     
     endTime = time.time()
     print("Measurement finished... " + str(endTime))
+    
+    aggregate.wait()
+    aggregate.kill()
+
 
 def skype(iteration):  
     # startMeasurement(iteration)
