@@ -226,9 +226,11 @@ def iterate(iteration):
         discord(iteration)
 
 def runIterations():
+    rep = 0
     for i in randomizedIterations:
-        print(str(i.mic) + " | " + str(i.cam) + " | " + str(i.ss) + " | " + str(i.t) + " | " + str(i.app))
+        print(str(rep) +": "+ str(i.mic) + " | " + str(i.cam) + " | " + str(i.ss) + " | " + str(i.t) + " | " + str(i.app))
         iterate(i)
+        rep += 1
     
 runIterations()
 
