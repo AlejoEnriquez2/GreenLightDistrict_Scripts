@@ -2,6 +2,7 @@ import pyautogui
 import time
 import csv
 import subprocess
+import random
 
 class Coordinate:
     def __init__(self, x, y):
@@ -60,6 +61,7 @@ with open(iterationsPath, mode='r') as file:
     iterationsPath = csv.reader(file)
     for row in iterationsPath:
         randomizedIterations.append(Iteration(int(row[0]),int(row[1]),int(row[2]),int(row[3]),int(row[4])))
+    random.shuffle(randomizedIterations)
 
 with open(skypeStartMeetingPath, mode='r') as file:
     skypeStartMeetingPath = csv.reader(file)
