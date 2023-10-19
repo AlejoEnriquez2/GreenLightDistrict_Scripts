@@ -28,10 +28,19 @@ else
     exit 1
 fi
 
-time=$(((t * 5)+2))
+# Find the main ethernet interface
+interface=$(ip route | awk '/default/ {print $5}')
+
+time=$((t * 5))
 echo "Measuring $app_name for $time seconds"
 
+touch tshark.pcap
+chmod o=rw tshark.pcap
+
+
 sudo timeout -s SIGINT "$time" powerjoular -l -a "$app_name" -f "powerjoular.csv" &
+sudo tshark -i "$interface" -a duration:"$time" -w "tshark.pcap" &
+sudo ps -C "$app_name" -o pid,%cpu,%mem,start,time | tr -s ' ' ',' >> "ps.csv" &
 
 exit 0
 
