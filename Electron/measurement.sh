@@ -49,6 +49,7 @@ while [ $SECONDS -lt $ps_time ]; do
     sleep 1
 done &
 
+wait
 
 exit 0
 
