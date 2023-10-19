@@ -10,11 +10,11 @@ folder_name="${mic}_${cam}_${ss}_${t}_${app}"
 mkdir -p ExperimentData/"$folder_name"
 cd ExperimentData/"$folder_name"
 
-echo "mic: $mic"
-echo "cam: $cam"
-echo "ss: $ss"
-echo "t: $t"
-echo "app: $app"
+# echo "mic: $mic"
+# echo "cam: $cam"
+# echo "ss: $ss"
+# echo "t: $t"
+# echo "app: $app"
 
 # Map app value to app name
 if [ "$app" -eq 1 ]; then
@@ -39,7 +39,7 @@ sudo timeout -s SIGINT "$time" powerjoular -l -a "$app_name" -f "powerjoular.csv
 
 touch tshark.pcap
 chmod o=rw tshark.pcap
-sudo tshark -i "$interface" -a duration:"$time" -w "tshark.pcap" &
+sudo tshark -q -i "$interface" -a duration:"$time" -w "tshark.pcap" &
 
 ps_time=$((time + SECONDS))
 echo "timestamp,pid,%mem" > "ps.csv"
