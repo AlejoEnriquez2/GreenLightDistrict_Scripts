@@ -89,9 +89,9 @@ with open(discordStartMeetingPath, mode='r') as file:
         discordStartMeetingCoordinates.append(Coordinate(int(row[0]), int(row[1])))
 
 with open(discordScreenSharingPath, mode='r') as file:
-    skypeScreenSharingPath = csv.reader(file)
-    for row in skypeScreenSharingPath:
-        skypeShareScreenCoordinates.append(Coordinate(int(row[0]), int(row[1])))
+    discordScreenSharingPath = csv.reader(file)
+    for row in discordScreenSharingPath:
+        discordShareScreenCoordinates.append(Coordinate(int(row[0]), int(row[1])))
 
 with open(discordCameraPath, mode='r') as file:
     discordCameraPath = csv.reader(file)
@@ -184,7 +184,9 @@ def startMeasurement(iteration):
 
 
 def skype(iteration):  
-    # startMeasurement(iteration)
+    print("\n")
+    print("################# SKYPE #################")
+    print("CAM: " + str(iteration.cam) + " - SS: " + str(iteration.ss))
     openSkype()
     startSkypeMeeting()
     if(iteration.mic == 0):
@@ -199,7 +201,9 @@ def skype(iteration):
     closeSkype()  
 
 def slack(iteration):
-    # startMeasurement(iteration)
+    print("\n")
+    print("################# SLACK #################")
+    print("CAM: " + str(iteration.cam) + " - SS: " + str(iteration.ss))
     openSlack()
     startSlackMeeting()
     if(iteration.mic == 0):
@@ -214,7 +218,9 @@ def slack(iteration):
     closeSlack()
 
 def discord(iteration):
-    # startMeasurement(iteration)
+    print("\n")
+    print("################# DISCORD #################")
+    print("CAM: " + str(iteration.cam) + " - SS: " + str(iteration.ss))
     openDiscord()
     startDiscordMeeting()
     if(iteration.mic == 0):
@@ -239,7 +245,11 @@ def iterate(iteration):
 def runIterations():
     rep = 0
     for i in randomizedIterations:
+        print("\n")
+        print("\n")
         print(str(rep) +": "+ str(i.mic) + " | " + str(i.cam) + " | " + str(i.ss) + " | " + str(i.t) + " | " + str(i.app))
+        print("\n")
+        print("\n")
         iterate(i)
         rep += 1
     
