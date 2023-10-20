@@ -1,12 +1,13 @@
 #!/bin/bash
 
-mic="$1"
-cam="$2"
-ss="$3"
-t="$4"
-app="$5"
+index="$1"
+mic="$2"
+cam="$3"
+ss="$4"
+t="$5"
+app="$6"
 
-folder_name="${mic}_${cam}_${ss}_${t}_${app}"
+folder_name="Iter${index}_${mic}_${cam}_${ss}_${t}_${app}"
 mkdir -p ExperimentData/"$folder_name"
 cd ExperimentData/"$folder_name"
 
