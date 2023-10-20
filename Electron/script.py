@@ -248,9 +248,11 @@ def runIterations():
         print(str(rep) +": "+ str(i.mic) + " | " + str(i.cam) + " | " + str(i.ss) + " | " + str(i.t) + " | " + str(i.app))
         print("\n")
         print("\n")
-        iterate(i)
+        
         rep += 1
         time.sleep(50)
+        i.index = rep
+        iterate(i)
     
 runIterations()
 
