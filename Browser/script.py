@@ -173,7 +173,7 @@ def micDiscordClick():
 def startMeasurement(iteration):
     startTime = time.time()
     # print("Start measurement... " + str(startTime))    
-    measure = subprocess.Popen([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True)
+    measure = subprocess.Popen([f"./measurement.sh {iteration.index} {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True)
     # print(subprocess.run([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True))    
     time.sleep(iteration.t*5)
 
@@ -258,8 +258,9 @@ def runIterations():
         print(str(rep) +": "+ str(i.mic) + " | " + str(i.cam) + " | " + str(i.ss) + " | " + str(i.t) + " | " + str(i.app))
         print("\n")
         print("\n")
+        
+        i.index = rep
         iterate(i)
-        rep += 1
     
 runIterations()
 
