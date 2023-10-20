@@ -64,7 +64,7 @@ with open(iterationsPath, mode='r') as file:
     iterationsPath = csv.reader(file)
     for row in iterationsPath:
         randomizedIterations.append(Iteration(int(row[0]),int(row[1]),int(row[2]),int(row[3]),int(row[4])))
-    random.shuffle(randomizedIterations)
+    #random.shuffle(randomizedIterations)
 
 with open(skypeStartMeetingPath, mode='r') as file:
     skypeStartMeetingPath = csv.reader(file)
@@ -169,7 +169,7 @@ def micDiscordClick():
 def startMeasurement(iteration):
     startTime = time.time()
     print("Start measurement... " + str(startTime))    
-    measure = subprocess.Popen([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True)
+    measure = subprocess.Popen([f"./measurement.sh {iteration.index} {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True)
     # print(subprocess.run([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True))    
     time.sleep(iteration.t*60)
 
@@ -246,13 +246,11 @@ def runIterations():
         print("\n")
         print("\n")
         print(str(rep) +": "+ str(i.mic) + " | " + str(i.cam) + " | " + str(i.ss) + " | " + str(i.t) + " | " + str(i.app))
-        print("\n")
-        print("\n")
-        
-        rep += 1
-        time.sleep(50)
+        print("\n")                               
         i.index = rep
         iterate(i)
+        time.sleep(50)
+        rep += 1
     
 runIterations()
 

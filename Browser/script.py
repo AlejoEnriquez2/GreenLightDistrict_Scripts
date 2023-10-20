@@ -25,27 +25,27 @@ endTime = time.time()
 iterationsPath = "randomizedIterations.csv"
 randomizedIterations = []
 
-browserOpenPos = Coordinate(132, 1078)
-browserClosePos = Coordinate(27, 61)
-openBookmarkPos = Coordinate(819,134) # Please create a book mark for each of the applications and put it in the bookmark place
+browserOpenPos = Coordinate(37, 473)
+browserClosePos = Coordinate(995, 44)
+openBookmarkPos = Coordinate(922, 125) # Please create a book mark for each of the applications and put it in the bookmark place
 
 # SKYPE
 skypeStartMeetingPath = "Skype/csv/skypeStartMeeting.csv"
 skypeScreenSharingPath = "Skype/csv/skypeScreenSharing.csv"
-skypeOpenPosition = Coordinate(711, 207) # This will be the position of the skype application in your bookmark 
+skypeOpenPosition = Coordinate(907, 189) # This will be the position of the skype application in your bookmark 
 skypeMicPosition = Coordinate(380, 962)
-skypeCameraPosition = Coordinate(447, 966)
-skypeStopMeeting = Coordinate(529, 962)
+skypeCameraPosition = Coordinate(526, 999)
+skypeStopMeeting = Coordinate(526, 999)
 skypeStartMeetingCoordinates = []
 skypeShareScreenCoordinates = []
 
 # SLACK
 slackStartMeetingPath = "Slack/csv/slackStartMeeting.csv"
 slackScreenSharingPath = "Slack/csv/slackScreenSharing.csv"
-slackOpenPosition = Coordinate(769, 239) # This will be the position of the slack application in your bookmark 
-slackMicPosition = Coordinate(226, 1018)
-slackCameraPosition = Coordinate(106, 973)
-slackStopMeeting = Coordinate(290, 927)
+slackOpenPosition = Coordinate(759, 214) # This will be the position of the slack application in your bookmark 
+slackMicPosition = Coordinate(96,1007)
+slackCameraPosition = Coordinate(137,1006)
+slackStopMeeting = Coordinate(239,1008)
 slackStartMeetingCoordinates = []
 slackShareScreenCoordinates = []
 
@@ -53,9 +53,9 @@ slackShareScreenCoordinates = []
 discordStartMeetingPath = "Discord/discordStartMeeting.csv"
 discordScreenSharingPath = "Discord/discordScreenSharing.csv"
 discordCameraPath = "Discord/discordCamera.csv"
-discordOpenPosition = Coordinate(750, 264)  # This will be the position of the discord application in your bookmark 
-discordMicPosition = Coordinate(223, 1017)
-discordStopMeeting = Coordinate(287, 928)
+discordOpenPosition = Coordinate(788, 240)  # This will be the position of the discord application in your bookmark 
+discordMicPosition = Coordinate(292,1059)
+discordStopMeeting = Coordinate(834, 1034)
 discordStartMeetingCoordinates = []
 discordShareScreenCoordinates = []
 discordCameraCoordinates = []
@@ -65,7 +65,7 @@ with open(iterationsPath, mode='r') as file:
     iterationsPath = csv.reader(file)
     for row in iterationsPath:
         randomizedIterations.append(Iteration(int(row[0]),int(row[1]),int(row[2]),int(row[3]),int(row[4])))
-    random.shuffle(randomizedIterations)
+    #random.shuffle(randomizedIterations)
 
 with open(skypeStartMeetingPath, mode='r') as file:
     skypeStartMeetingPath = csv.reader(file)
@@ -175,7 +175,7 @@ def startMeasurement(iteration):
     # print("Start measurement... " + str(startTime))    
     measure = subprocess.Popen([f"./measurement.sh {iteration.index} {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True)
     # print(subprocess.run([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True))    
-    time.sleep(iteration.t*5)
+    time.sleep(iteration.t*60)
 
     measure.wait()
     # os.kill(measure.pid, signal.SIGINT)
@@ -188,7 +188,7 @@ def startMeasurement(iteration):
 def skype(iteration):  
     print("\n")
     print("################# SKYPE #################")
-    print("CAM: " + str(iteration.cam) + " - SS: " + str(iteration.ss))
+    print(str(iteration.mic) + " | " + str(iteration.cam) + " | " + str(iteration.ss) + " | " + str(iteration.t) + " | " + str(iteration.app))
     openBrowser()
     openBookmark()
     openSkype()
@@ -207,7 +207,7 @@ def skype(iteration):
 def slack(iteration):
     print("\n")
     print("################# SLACK #################")
-    print("CAM: " + str(iteration.cam) + " - SS: " + str(iteration.ss))
+    print(str(iteration.mic) + " | " + str(iteration.cam) + " | " + str(iteration.ss) + " | " + str(iteration.t) + " | " + str(iteration.app))
     openBrowser()
     openBookmark()
     openSlack()
@@ -226,7 +226,7 @@ def slack(iteration):
 def discord(iteration):
     print("\n")
     print("################# DISCORD #################")
-    print("CAM: " + str(iteration.cam) + " - SS: " + str(iteration.ss))
+    print(str(iteration.mic) + " | " + str(iteration.cam) + " | " + str(iteration.ss) + " | " + str(iteration.t) + " | " + str(iteration.app))
     openBrowser()
     openBookmark()
     openDiscord()
@@ -251,16 +251,17 @@ def iterate(iteration):
         discord(iteration)
 
 def runIterations():
-    rep = 0
+    rep = 1
     for i in randomizedIterations:
         print("\n")
         print("\n")
         print(str(rep) +": "+ str(i.mic) + " | " + str(i.cam) + " | " + str(i.ss) + " | " + str(i.t) + " | " + str(i.app))
         print("\n")
-        print("\n")
-        
+        print("\n")    
         i.index = rep
         iterate(i)
+        time.sleep(50)
+        rep =+1
     
 runIterations()
 
