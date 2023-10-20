@@ -31,7 +31,7 @@ fi
 # Find the main ethernet interface
 interface=$(ip route | awk '/default/ {print $5}')
 
-time=$((t * 5))
+time=$((t * 60))
 echo "Measuring $app_name for $time seconds"
 
 

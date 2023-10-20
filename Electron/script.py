@@ -168,23 +168,23 @@ def micDiscordClick():
 
 def startMeasurement(iteration):
     startTime = time.time()
-    # print("Start measurement... " + str(startTime))    
+    print("Start measurement... " + str(startTime))    
     measure = subprocess.Popen([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True)
     # print(subprocess.run([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True))    
-    time.sleep(iteration.t*5)
+    time.sleep(iteration.t*60)
 
     measure.wait()
     # os.kill(measure.pid, signal.SIGINT)
     
-    endTime = time.time()
-    # print("Measurement finished... " + str(endTime))
+    endTime = time.time() - startTime
+    print("Measurement finished... " + str(endTime))
     
 
 
 def skype(iteration):  
     print("\n")
     print("################# SKYPE #################")
-    print("CAM: " + str(iteration.cam) + " - SS: " + str(iteration.ss))
+    print(str(iteration.mic) + " | " + str(iteration.cam) + " | " + str(iteration.ss) + " | " + str(iteration.t) + " | " + str(iteration.app))
     openSkype()
     startSkypeMeeting()
     if(iteration.mic == 0):
@@ -201,7 +201,7 @@ def skype(iteration):
 def slack(iteration):
     print("\n")
     print("################# SLACK #################")
-    print("CAM: " + str(iteration.cam) + " - SS: " + str(iteration.ss))
+    print(str(iteration.mic) + " | " + str(iteration.cam) + " | " + str(iteration.ss) + " | " + str(iteration.t) + " | " + str(iteration.app))
     openSlack()
     startSlackMeeting()
     if(iteration.mic == 0):
@@ -218,7 +218,7 @@ def slack(iteration):
 def discord(iteration):
     print("\n")
     print("################# DISCORD #################")
-    print("CAM: " + str(iteration.cam) + " - SS: " + str(iteration.ss))
+    print(str(iteration.mic) + " | " + str(iteration.cam) + " | " + str(iteration.ss) + " | " + str(iteration.t) + " | " + str(iteration.app))
     openDiscord()
     startDiscordMeeting()
     if(iteration.mic == 0):
@@ -241,7 +241,7 @@ def iterate(iteration):
         discord(iteration)
 
 def runIterations():
-    rep = 0
+    rep = 1
     for i in randomizedIterations:
         print("\n")
         print("\n")
@@ -250,6 +250,7 @@ def runIterations():
         print("\n")
         iterate(i)
         rep += 1
+        time.sleep(50)
     
 runIterations()
 
