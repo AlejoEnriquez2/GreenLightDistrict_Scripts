@@ -1,6 +1,11 @@
 import pyautogui
 import time
 import csv
+import subprocess
+import random
+import os
+import signal
+
 
 class Coordinate:
     def __init__(self, x, y):
@@ -59,6 +64,7 @@ with open(iterationsPath, mode='r') as file:
     iterationsPath = csv.reader(file)
     for row in iterationsPath:
         randomizedIterations.append(Iteration(int(row[0]),int(row[1]),int(row[2]),int(row[3]),int(row[4])))
+    random.shuffle(randomizedIterations)
 
 with open(skypeStartMeetingPath, mode='r') as file:
     skypeStartMeetingPath = csv.reader(file)
@@ -86,9 +92,9 @@ with open(discordStartMeetingPath, mode='r') as file:
         discordStartMeetingCoordinates.append(Coordinate(int(row[0]), int(row[1])))
 
 with open(discordScreenSharingPath, mode='r') as file:
-    skypeScreenSharingPath = csv.reader(file)
-    for row in skypeScreenSharingPath:
-        skypeShareScreenCoordinates.append(Coordinate(int(row[0]), int(row[1])))
+    discordScreenSharingPath = csv.reader(file)
+    for row in discordScreenSharingPath:
+        discordShareScreenCoordinates.append(Coordinate(int(row[0]), int(row[1])))
 
 with open(discordCameraPath, mode='r') as file:
     discordCameraPath = csv.reader(file)
@@ -160,7 +166,25 @@ def micDiscordClick():
     click(discordMicPosition.X, discordMicPosition.Y, 0)
 
 
+def startMeasurement(iteration):
+    startTime = time.time()
+    # print("Start measurement... " + str(startTime))    
+    measure = subprocess.Popen([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True)
+    # print(subprocess.run([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True))    
+    time.sleep(iteration.t*5)
+
+    measure.wait()
+    # os.kill(measure.pid, signal.SIGINT)
+    
+    endTime = time.time()
+    # print("Measurement finished... " + str(endTime))
+    
+
+
 def skype(iteration):  
+    print("\n")
+    print("################# SKYPE #################")
+    print("CAM: " + str(iteration.cam) + " - SS: " + str(iteration.ss))
     openSkype()
     startSkypeMeeting()
     if(iteration.mic == 0):
@@ -170,15 +194,14 @@ def skype(iteration):
     if(iteration.ss == 1):
         shareSkypeScreen()
 
-    startTime = time.time()
-    print("Start measurement... " + str(startTime))
-    time.sleep(iteration.t*5)
-    endTime = time.time()
-    print("Measurement finished... " + str(endTime))
+    startMeasurement(iteration)
     stopSkypeMeeting()
     closeSkype()  
 
 def slack(iteration):
+    print("\n")
+    print("################# SLACK #################")
+    print("CAM: " + str(iteration.cam) + " - SS: " + str(iteration.ss))
     openSlack()
     startSlackMeeting()
     if(iteration.mic == 0):
@@ -188,15 +211,14 @@ def slack(iteration):
     if(iteration.ss == 1):
         shareSlackScreen()
 
-    startTime = time.time()
-    print("Start measurement... " + str(startTime))
-    time.sleep(iteration.t*5)
-    endTime = startTime - time.time() 
-    print("Measurement finished... " + str(endTime))
+    startMeasurement(iteration)
     stopSlackMeeting()
     closeSlack()
 
 def discord(iteration):
+    print("\n")
+    print("################# DISCORD #################")
+    print("CAM: " + str(iteration.cam) + " - SS: " + str(iteration.ss))
     openDiscord()
     startDiscordMeeting()
     if(iteration.mic == 0):
@@ -206,12 +228,7 @@ def discord(iteration):
     if(iteration.ss == 1):
         shareDiscordScreen()    
 
-    startTime = time.time()
-    print("Start measurement... " + str(startTime))
-    time.sleep(iteration.t*5)
-    endTime = startTime - time.time() 
-    print("Measurement finished... " + str(endTime))
-    micDiscordClick()
+    startMeasurement(iteration)
     stopDiscordMeeting()
     closeDiscord()
 
@@ -224,9 +241,15 @@ def iterate(iteration):
         discord(iteration)
 
 def runIterations():
+    rep = 0
     for i in randomizedIterations:
-        print(str(i.mic) + " | " + str(i.cam) + " | " + str(i.ss) + " | " + str(i.t) + " | " + str(i.app))
+        print("\n")
+        print("\n")
+        print(str(rep) +": "+ str(i.mic) + " | " + str(i.cam) + " | " + str(i.ss) + " | " + str(i.t) + " | " + str(i.app))
+        print("\n")
+        print("\n")
         iterate(i)
+        rep += 1
     
 runIterations()
 

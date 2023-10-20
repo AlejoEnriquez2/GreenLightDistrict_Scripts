@@ -1,5 +1,9 @@
-- Check that the virtual microphone and virtual camera loops properly
-- Video of virtual camera is not looping 
+- Check that the virtual microphone and virtual camera loops properly (X)
+- Video of virtual camera is not looping (X)
 - Script.py is again inside the skype folder (X)
 - Finish configuring slack clicks (X)
-- Clean files and paths
+- Clean files and paths (X)
+- Fix the virtual microphone, everytime opens an app needs to state to use the virtual one
+- Make the virtual microphone have the same content for all the iterations 
+    - Maybe just send a frequency audio loop
+    - Make the audio start at every iteration
