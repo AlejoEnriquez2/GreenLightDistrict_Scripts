@@ -32,20 +32,20 @@ openBookmarkPos = Coordinate(819,134) # Please create a book mark for each of th
 # SKYPE
 skypeStartMeetingPath = "Skype/csv/skypeStartMeeting.csv"
 skypeScreenSharingPath = "Skype/csv/skypeScreenSharing.csv"
-skypeOpenPosition = Coordinate(665, 210) # This will be the position of the skype application in your bookmark 
-skypeMicPosition = Coordinate(382, 960)
-skypeCameraPosition = Coordinate(446, 959)
-skypeStopMeeting = Coordinate(527, 968)
+skypeOpenPosition = Coordinate(711, 207) # This will be the position of the skype application in your bookmark 
+skypeMicPosition = Coordinate(380, 962)
+skypeCameraPosition = Coordinate(447, 966)
+skypeStopMeeting = Coordinate(529, 962)
 skypeStartMeetingCoordinates = []
 skypeShareScreenCoordinates = []
 
 # SLACK
 slackStartMeetingPath = "Slack/csv/slackStartMeeting.csv"
 slackScreenSharingPath = "Slack/csv/slackScreenSharing.csv"
-slackOpenPosition = Coordinate(36,334) # This will be the position of the slack application in your bookmark 
-slackMicPosition = Coordinate(101,1054)
-slackCameraPosition = Coordinate(135,1054)
-slackStopMeeting = Coordinate(244,1058)
+slackOpenPosition = Coordinate(769, 239) # This will be the position of the slack application in your bookmark 
+slackMicPosition = Coordinate(226, 1018)
+slackCameraPosition = Coordinate(106, 973)
+slackStopMeeting = Coordinate(290, 927)
 slackStartMeetingCoordinates = []
 slackShareScreenCoordinates = []
 
@@ -53,9 +53,9 @@ slackShareScreenCoordinates = []
 discordStartMeetingPath = "Discord/discordStartMeeting.csv"
 discordScreenSharingPath = "Discord/discordScreenSharing.csv"
 discordCameraPath = "Discord/discordCamera.csv"
-discordOpenPosition = Coordinate(32,271)  # This will be the position of the discord application in your bookmark 
-discordMicPosition = Coordinate(290,1052)
-discordStopMeeting = Coordinate(830,1037)
+discordOpenPosition = Coordinate(750, 264)  # This will be the position of the discord application in your bookmark 
+discordMicPosition = Coordinate(223, 1017)
+discordStopMeeting = Coordinate(287, 928)
 discordStartMeetingCoordinates = []
 discordShareScreenCoordinates = []
 discordCameraCoordinates = []
