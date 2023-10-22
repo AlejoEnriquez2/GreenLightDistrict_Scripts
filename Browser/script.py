@@ -148,7 +148,7 @@ def shareDiscordScreen():
         click(i.X, i.Y, 3)
 
 def cameraSkypeClick():
-    click(skypeCameraPosition.X, skypeCameraPosition.Y, 2)
+    click(skypeCameraPosition.X, skypeCameraPosition.Y, 0)
 def cameraSlackClick():
     click(slackCameraPosition.X, slackCameraPosition.Y, 0)
 def cameraDiscordClick():
@@ -172,12 +172,12 @@ def micDiscordClick():
 
 def startMeasurement(iteration):
     startTime = time.time()
-    # print("Start measurement... " + str(startTime))    
-    #measure = subprocess.Popen([f"./measurement.sh {iteration.index} {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True)
+    print("Start measurement... " + str(startTime))    
+    measure = subprocess.Popen([f"./measurement.sh {iteration.index} {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True)
     # print(subprocess.run([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True))    
-    time.sleep(iteration.t*3)
+    time.sleep(iteration.t*60)
 
-    #measure.wait()
+    measure.wait()
     # os.kill(measure.pid, signal.SIGINT)
     
     endTime = time.time() - startTime
@@ -195,10 +195,10 @@ def skype(iteration):
     startSkypeMeeting()
     if(iteration.mic == 0):
         micSkypeClick()
-    if(iteration.cam == 1):
-        cameraSkypeClick()
     if(iteration.ss == 1):
         shareSkypeScreen()
+    if(iteration.cam == 1):
+        cameraSkypeClick()
 
     startMeasurement(iteration)
     stopSkypeMeeting()
