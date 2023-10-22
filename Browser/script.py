@@ -261,7 +261,7 @@ def runIterations():
         i.index = rep
         iterate(i)
         time.sleep(50)
-        rep =+1
+        rep += 1
     
 runIterations()
 
