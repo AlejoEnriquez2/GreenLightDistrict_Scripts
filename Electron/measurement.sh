@@ -7,15 +7,10 @@ ss="$4"
 t="$5"
 app="$6"
 
+# Make unique directory for current iteration
 folder_name="Iter${index}_${mic}_${cam}_${ss}_${t}_${app}"
 mkdir -p ExperimentData/"$folder_name"
 cd ExperimentData/"$folder_name"
-
-# echo "mic: $mic"
-# echo "cam: $cam"
-# echo "ss: $ss"
-# echo "t: $t"
-# echo "app: $app"
 
 # Map app value to app name
 if [ "$app" -eq 1 ]; then
@@ -32,16 +27,19 @@ fi
 # Find the main ethernet interface
 interface=$(ip route | awk '/default/ {print $5}')
 
+# Run duration in seconds
 time=$((t * 60))
 echo "Measuring $app_name for $time seconds"
 
-
+#  Run powerjoular with a timeout
 sudo timeout -s SIGINT "$time" powerjoular -l -a "$app_name" -f "powerjoular.csv" &
 
+# Run tshark with interface and duration options
 touch tshark.pcap
 chmod o=rw tshark.pcap
 sudo tshark -q -i "$interface" -a duration:"$time" -w "tshark.pcap" &
 
+# Run ps in a loop with an iterval of 1 second
 ps_time=$((time + SECONDS))
 echo "timestamp,pid,%mem" > "ps.csv"
 while [ $SECONDS -lt $ps_time ]; do
