@@ -22,7 +22,7 @@ class Iteration:
 
 startTime = time.time()
 endTime = time.time()
-iterationsPath = "randomizedIterations.csv"
+iterationsPath = "../Utility/iterations.csv"
 randomizedIterations = []
 
 browserOpenPos = Coordinate(37, 473)
@@ -30,8 +30,8 @@ browserClosePos = Coordinate(995, 44)
 openBookmarkPos = Coordinate(922, 125) # Please create a book mark for each of the applications and put it in the bookmark place
 
 # SKYPE
-skypeStartMeetingPath = "Skype/csv/skypeStartMeeting.csv"
-skypeScreenSharingPath = "Skype/csv/skypeScreenSharing.csv"
+skypeStartMeetingPath = "Skype/skypeStartMeeting.csv"
+skypeScreenSharingPath = "Skype/skypeScreenSharing.csv"
 skypeOpenPosition = Coordinate(907, 189) # This will be the position of the skype application in your bookmark 
 skypeMicPosition = Coordinate(380, 962)
 skypeCameraPosition = Coordinate(526, 999)
@@ -40,8 +40,8 @@ skypeStartMeetingCoordinates = []
 skypeShareScreenCoordinates = []
 
 # SLACK
-slackStartMeetingPath = "Slack/csv/slackStartMeeting.csv"
-slackScreenSharingPath = "Slack/csv/slackScreenSharing.csv"
+slackStartMeetingPath = "Slack/slackStartMeeting.csv"
+slackScreenSharingPath = "Slack/slackScreenSharing.csv"
 slackOpenPosition = Coordinate(759, 214) # This will be the position of the slack application in your bookmark 
 slackMicPosition = Coordinate(96,1007)
 slackCameraPosition = Coordinate(137,1006)

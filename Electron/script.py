@@ -22,12 +22,12 @@ class Iteration:
 
 startTime = time.time()
 endTime = time.time()
-iterationsPath = "randomizedIterations.csv"
+iterationsPath = "../Utility/iterations.csv"
 randomizedIterations = []
 
 # SKYPE
-skypeStartMeetingPath = "Skype/csv/skypeStartMeeting.csv"
-skypeScreenSharingPath = "Skype/csv/skypeScreenSharing.csv"
+skypeStartMeetingPath = "Skype/skypeStartMeeting.csv"
+skypeScreenSharingPath = "Skype/skypeScreenSharing.csv"
 skypeOpenPosition = Coordinate(35,403)
 skypeMicPosition = Coordinate(463,1048)
 skypeCameraPosition = Coordinate(528,1044)
@@ -37,8 +37,8 @@ skypeStartMeetingCoordinates = []
 skypeShareScreenCoordinates = []
 
 # SLACK
-slackStartMeetingPath = "Slack/csv/slackStartMeeting.csv"
-slackScreenSharingPath = "Slack/csv/slackScreenSharing.csv"
+slackStartMeetingPath = "Slack/slackStartMeeting.csv"
+slackScreenSharingPath = "Slack/slackScreenSharing.csv"
 slackOpenPosition = Coordinate(36,334)
 slackMicPosition = Coordinate(101,1054)
 slackCameraPosition = Coordinate(135,1054)
