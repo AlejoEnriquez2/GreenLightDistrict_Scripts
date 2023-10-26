@@ -3,8 +3,6 @@ import time
 import csv
 import subprocess
 import random
-import os
-import signal
 
 
 class Coordinate:
@@ -64,7 +62,7 @@ with open(iterationsPath, mode='r') as file:
     iterationsPath = csv.reader(file)
     for row in iterationsPath:
         randomizedIterations.append(Iteration(int(row[0]),int(row[1]),int(row[2]),int(row[3]),int(row[4])))
-    #random.shuffle(randomizedIterations)
+    random.shuffle(randomizedIterations)
 
 with open(skypeStartMeetingPath, mode='r') as file:
     skypeStartMeetingPath = csv.reader(file)
@@ -170,11 +168,10 @@ def startMeasurement(iteration):
     startTime = time.time()
     print("Start measurement... " + str(startTime))    
     measure = subprocess.Popen([f"./measurement.sh {iteration.index} {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True)
-    # print(subprocess.run([f"./measurement.sh {iteration.mic} {iteration.cam} {iteration.ss} {iteration.t} {iteration.app}"], shell=True))    
+    
     time.sleep(iteration.t*60)
 
     measure.wait()
-    # os.kill(measure.pid, signal.SIGINT)
     
     endTime = time.time() - startTime
     print("Measurement finished... " + str(endTime))
@@ -249,9 +246,9 @@ def runIterations():
         print("\n")                               
         i.index = rep
         iterate(i)
-        time.sleep(50)
+        time.sleep(120) # 2 minutes interval between iterations
         rep += 1
-    
+
 runIterations()
 
 
