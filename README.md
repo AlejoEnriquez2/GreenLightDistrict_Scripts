@@ -22,39 +22,39 @@ Accordingly, This repository is devided into three main parts:
 ## Browser
 
 ### Folder structure
-- __Browser__
-   - __Discord__
-     - [discordCamera.csv](Discord/discordCamera.csv)
-     - [discordScreenSharing.csv](Discord/discordScreenSharing.csv)
-     - [discordStartMeeting.csv](Discord/discordStartMeeting.csv)
-   - __Skype__
-     - [skypeScreenSharing.csv](Skype/skypeScreenSharing.csv)
-     - [skypeStartMeeting.csv](Skype/skypeStartMeeting.csv)
-   - __Slack__
-     - [slackScreenSharing.csv](Slack/slackScreenSharing.csv)
-     - [slackStartMeeting.csv](Slack/slackStartMeeting.csv)
-   - [measurement.sh](measurement.sh)
-   - [script.py](script.py)
+   - __Browser__
+     - __Discord__
+       - [discordCamera.csv](Browser/Discord/discordCamera.csv)
+       - [discordScreenSharing.csv](Browser/Discord/discordScreenSharing.csv)
+       - [discordStartMeeting.csv](Browser/Discord/discordStartMeeting.csv)
+     - __Skype__
+       - [skypeScreenSharing.csv](Browser/Skype/skypeScreenSharing.csv)
+       - [skypeStartMeeting.csv](Browser/Skype/skypeStartMeeting.csv)
+     - __Slack__
+       - [slackScreenSharing.csv](Browser/Slack/slackScreenSharing.csv)
+       - [slackStartMeeting.csv](Browser/Slack/slackStartMeeting.csv)
+     - [measurement.sh](Browser/measurement.sh)
+     - [script.py](Browser/script.py)
 
 ## Electron
 ### Folder structure
-- __Electron__
-   - __Discord__
-     - [discordCamera.csv](Discord/discordCamera.csv)
-     - [discordScreenSharing.csv](Discord/discordScreenSharing.csv)
-     - [discordStartMeeting.csv](Discord/discordStartMeeting.csv)
-   - __Skype__
-     - [skypeScreenSharing.csv](Skype/skypeScreenSharing.csv)
-     - [skypeStartMeeting.csv](Skype/skypeStartMeeting.csv)
-   - __Slack__
-     - [slackScreenSharing.csv](Slack/slackScreenSharing.csv)
-     - [slackStartMeeting.csv](Slack/slackStartMeeting.csv)
-   - [measurement.sh](measurement.sh)
-   - [script.py](script.py)
+   - __Electron__
+     - __Discord__
+       - [discordCamera.csv](Electron/Discord/discordCamera.csv)
+       - [discordScreenSharing.csv](Electron/Discord/discordScreenSharing.csv)
+       - [discordStartMeeting.csv](Electron/Discord/discordStartMeeting.csv)
+     - __Skype__
+       - [skypeScreenSharing.csv](Electron/Skype/skypeScreenSharing.csv)
+       - [skypeStartMeeting.csv](Electron/Skype/skypeStartMeeting.csv)
+     - __Slack__
+       - [slackScreenSharing.csv](Electron/Slack/slackScreenSharing.csv)
+       - [slackStartMeeting.csv](Electron/Slack/slackStartMeeting.csv)
+     - [measurement.sh](Electron/measurement.sh)
+     - [script.py](Electron/script.py)
 
 ## Utility
 #### Folder structure
-- __Utility__
+   - __Utility__
      - [VirtualCamera.py](Utility/VirtualCamera.py)
      - [VirtualMicrophone.py](Utility/VirtualMicrophone.py)
      - [iterations.csv](Utility/iterations.csv)
