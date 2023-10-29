@@ -22,6 +22,7 @@ Accordingly, This repository is devided into three main parts:
 ## Information in ACTION!
 You can also find more information about this experiment in action from this clip [here](https://www.youtube.com/watch?v=xPcLVBPud18) or if you want to only see how the script work you can jump to  [here](https://youtu.be/xPcLVBPud18?t=396)
 
+> :warning: **The coordination provided in this repo only work on a particular machine if you want to run the script on your machine please change the coordination to match your machine**
 ## Browser
 
 ### Folder structure
