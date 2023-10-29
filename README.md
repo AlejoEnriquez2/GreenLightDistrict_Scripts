@@ -64,3 +64,17 @@ Accordingly, This repository is devided into three main parts:
 
 
 
+## Data-Analysis
+The "green-analysis" directory consists of a R project for data-analysis of experiment data.
+
+#### Folder structure
+  - __preprocessing__
+    - [data-preprocessing.R](green-analysis/preprocessing/data-preprocessing.R)
+    - [outlier-detection.R](green-analysis/preprocessing/outlier-detection.R)
+    - [outlier-removal.R](Utility/outlier-removal.R)
+  - __data-analysis__
+  - __graphs__
+  Folder containing all graphs and plots images
+  - __renv__
+  This directory is for R virtual environment.
+
