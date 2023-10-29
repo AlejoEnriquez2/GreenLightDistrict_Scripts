@@ -19,6 +19,9 @@ Accordingly, This repository is devided into three main parts:
 
 ```pip install -r requirements.txt```
 
+## Information in ACTION!
+You can also find more information about this experiment in action from this clip [here](https://www.youtube.com/watch?v=xPcLVBPud18) or if you want to only see how the script work you can jump to  [here](https://youtu.be/xPcLVBPud18?t=396)
+
 ## Browser
 
 ### Folder structure
