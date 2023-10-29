@@ -73,7 +73,7 @@ The "green-analysis" directory consists of a R project for data-analysis of expe
   Note: The data folder is not upploaded on GitHub, so data-preprocessing can't be run without it. The raw data is in `data-analysis/data.csv` file. The clean data after preprocessing is stored in ``data-analysis/clean-data.csv`
     - [data-preprocessing.R](green-analysis/preprocessing/data-preprocessing.R)
     - [outliers-detection.R](green-analysis/preprocessing/outliers-detection.R)
-    - [outliers-removal.R](green-analysis/outliers-removal.R)
+    - [outliers-removal.R](green-analysis//preprocessing/outliers-removal.R)
   - __data-analysis__
     `data-analysis` folder consists of r files for performing data-analysis methods on data, and the resulting data files.
     - [Whitney.R](green-analysis/data-analysis/Whitney.R)
