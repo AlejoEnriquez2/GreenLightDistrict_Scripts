@@ -69,12 +69,32 @@ The "green-analysis" directory consists of a R project for data-analysis of expe
 
 #### Folder structure
   - __preprocessing__
+  This directory consists of R files to clean the raw data, and use it for data analysis.
+  Note: The data folder is not upploaded on GitHub, so data-preprocessing can't be run without it. The raw data is in `data-analysis/data.csv` file. The clean data after preprocessing is stored in ``data-analysis/clean-data.csv`
     - [data-preprocessing.R](green-analysis/preprocessing/data-preprocessing.R)
-    - [outlier-detection.R](green-analysis/preprocessing/outlier-detection.R)
-    - [outlier-removal.R](Utility/outlier-removal.R)
+    - [outliers-detection.R](green-analysis/preprocessing/outliers-detection.R)
+    - [outliers-removal.R](Utility/outliers-removal.R)
   - __data-analysis__
+    `data-analysis` folder consists of r files for performing data-analysis methods on data, and the resulting data files.
+    - [Whitney.R](green-analysis/data-analysis/Whitney.R)
+    - [data.csv](green-analysis/data-analysis/data.csv)
+    - [runs_avg.R](green-analysis/data-analysis/runs_avg.R)
+    - [analysis.R](green-analysis/data-analysis/analysis.R)
+    - [data.zip](green-analysis/data-analysis/data.zip)
+    - [transformation.R](green-analysis/data-analysis/transformation.R)
+    - [avg-config-data.csv](green-analysis/data-analysis/avg-config-data.csv)
+    - [delta-whitney-test.R](green-analysis/data-analysis/delta-whitney-test.R)
+    - [transformed-data.csv](green-analysis/data-analysis/transformed-data.csv)
+    - [clean-data.csv](green-analysis/data-analysis/clean-data.csv)
+    - [normality.R](green-analysis/data-analysis/normality.R)
+    - [variables.R](green-analysis/data-analysis/variables.R)
+    - [correction.R](green-analysis/data-analysis/correction.R)
+    - [p-values-duration.csv](green-analysis/data-analysis/p-values-duration.csv)
+    - [visualization.R](green-analysis/data-analysis/visualization.R)
+    - [data](green-analysis/data-analysis/data)
+    - [p-values-mode.csv](green-analysis/data-analysis/p-values-mode.csv)
   - __graphs__
-  Folder containing all graphs and plots images
+    Folder containing all graphs and plots images
   - __renv__
-  This directory is for R virtual environment.
+    This directory is for R virtual environment.
 
