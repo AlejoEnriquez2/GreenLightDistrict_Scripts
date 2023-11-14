@@ -6,7 +6,7 @@ library(dplyr)
 library(stats)
 
 
-#access the data file, data_file is global variable, which are gonna fuck me up at some point. 
+#access the data file, data_file is global variable. 
 data_file
 
 # descriptive statistics
