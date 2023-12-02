@@ -3,7 +3,7 @@ install.packages("dplyr")
 library(ggplot2)
 library(dplyr)
 
-check_data <-  read.csv("data-analysis/clean-data.csv")
+check_data <-  read.csv("data-analysis/data.csv")
 
 #electron and web apps data
 check_web_data <- check_data %>% filter(app_type == "web")
@@ -35,6 +35,86 @@ electron_memory_data <- check_electron_data$memory
 # 
 # # Print the variables in a single statement
 # print(paste("Mean Energy:", mean_energy, ", Median Energy:", median_energy, ", Mode Energy:", mode_energy))
+
+## specific detection of outliers
+
+detect_outliers <- function(data_name, data_column) {
+  Q1 <- quantile(data_column, 0.25)
+  Q3 <- quantile(data_column, 0.75)
+  IQR_value <- Q3 - Q1
+  lower_bound <- Q1 - 1.5 * IQR_value
+  upper_bound <- Q3 + 1.5 * IQR_value
+  
+  outliers <- data_column[data_column < lower_bound | data_column > upper_bound]
+  print(data_name)
+  return(outliers)
+}
+
+# get the data for each electon app
+skype_electron_data_2 <- check_data %>% filter(app == 1 & app_type == "electron" & duration == 2)
+slack_electron_data_2 <- check_data %>% filter(app == 2   & app_type == "electron" & duration == 2)
+discord_electron_data_2 <- check_data %>% filter(app == 3 &  app_type == "electron" & duration == 2)
+
+# get the data for each electon app
+skype_web_data_2 <- check_data %>% filter(app == 1 & app_type == "web" & duration == 2)
+slack_web_data_2 <- check_data %>% filter(app == 2   & app_type == "web" & duration == 2)
+discord_web_data_2 <- check_data %>% filter(app == 3 &  app_type == "web" & duration == 2)
+
+# get the data for each electon app
+skype_electron_data_8 <- check_data %>% filter(app == 1 & app_type == "electron" & duration == 8)
+slack_electron_data_8 <- check_data %>% filter(app == 2   & app_type == "electron" & duration == 8)
+discord_electron_data_8 <- check_data %>% filter(app == 3 &  app_type == "electron" & duration == 8)
+
+# get the data for each electon app
+skype_web_data_8 <- check_data %>% filter(app == 1 & app_type == "web" & duration == 8)
+slack_web_data_8 <- check_data %>% filter(app == 2   & app_type == "web" & duration == 8)
+discord_web_data_8 <- check_data %>% filter(app == 3 &  app_type == "web" & duration == 8)
+
+detect_outliers("skype_web_data_8_network", skype_web_data_8$network)
+detect_outliers("slack_web_data_8_network", slack_web_data_8$network)
+detect_outliers("discord_web_data_8_network",  discord_web_data_8$network)
+
+detect_outliers("skype_web_data_2_network", skype_web_data_2$network)
+detect_outliers("slack_web_data_2_network", slack_web_data_2$network)
+detect_outliers("discord_web_data_2_network", discord_web_data_2$network)
+
+# For Web Data at Duration 8 - Memory
+detect_outliers("skype_web_data_8_memory", skype_web_data_8$memory)
+detect_outliers("slack_web_data_8_memory", slack_web_data_8$memory)
+detect_outliers("discord_web_data_8_memory", discord_web_data_8$memory)
+
+# For Web Data at Duration 2 - Memory
+detect_outliers("skype_web_data_2_memory", skype_web_data_2$memory)
+detect_outliers("slack_web_data_2_memory", slack_web_data_2$memory)
+detect_outliers("discord_web_data_2_memory", discord_web_data_2$memory)
+
+
+# electron network
+
+detect_outliers("skype_electron_data_8_network", skype_electron_data_8$network)
+detect_outliers("slack_electron_data_8_network", slack_electron_data_8$network)
+detect_outliers("discord_electron_data_8_network",  discord_electron_data_8$network)
+
+detect_outliers("skype_electron_data_2_network", skype_electron_data_2$network)
+detect_outliers("slack_electron_data_2_network", slack_electron_data_2$network)
+detect_outliers("discord_electron_data_2_network", discord_electron_data_2$network)
+
+
+# Calculate Quartiles and IQR for energy
+Q1_web_energy <- quantile(web_energy_data, 0.25)
+Q3_web_energy <- quantile(web_energy_data, 0.75)
+IQR_web_energy <- Q3_web_energy - Q1_web_energy
+
+# Calculate Lower and Upper Bounds
+lower_bound_web_energy <- Q1_web_energy - 1.5 * IQR_web_energy
+upper_bound_web_energy <- Q3_web_energy + 1.5 * IQR_web_energy
+
+# Identify Outliers
+web_energy_outliers <- web_energy_data[web_energy_data < lower_bound_web_energy | web_energy_data > upper_bound_web_energy]
+print("Web Energy Outliers:")
+print(web_energy_outliers)
+
+
 
 # Outliers for Web Energy Data
 # Calculate Quartiles and IQR for energy

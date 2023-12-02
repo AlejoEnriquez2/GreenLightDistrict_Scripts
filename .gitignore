@@ -3,3 +3,4 @@ dev-env
 *.webm
 green-analysis/data-analysis/data/
 green-analysis/.Rproj.user
+.Rproj.user
