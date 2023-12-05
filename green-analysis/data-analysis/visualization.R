@@ -238,12 +238,55 @@ violin_box_plot_network
 ggsave("graphs/violin/violin_box_plot_network.png", violin_box_plot_network)
 
 
+## 2 mins duration
+# Box-Violin - energy
+violin_box_plot_2_energy <- ggplot(data = data_file_2, aes(x = app_type, y = energy, fill = app_type)) +
+  geom_violin() +
+  labs(x = "App Type", y = "Energy Consumption [J]", title = "Energy Consumption for Electron vs. Web Apps for 2 minutes meeting") +
+  scale_fill_manual(values = c("electron" = "#5DADE2", "web" = "#F1948A")) +
+  geom_boxplot(width=.1, alpha=.5, position=position_dodge(.9)) +
+  stat_summary(fun=mean, geom="point", shape="diamond", size=3, color="black")
 
+violin_box_plot_2_energy
+ggsave("graphs/violin/violin_box_plot_2_energy.png", violin_box_plot_2_energy)
+
+# Box-Violin Plot for CPU Consumption (2 minutes duration)
+violin_box_plot_2_cpu <- ggplot(data = data_file_2, aes(x = app_type, y = cpu, fill = app_type)) +
+  geom_violin() +
+  labs(x = "App Type", y = "CPU Usage[%]", title = "CPU Usage for Electron vs. Web Apps for 8 minutes meeting") +
+  scale_fill_manual(values = c("electron" = "#5DADE2", "web" = "#F1948A")) +
+  geom_boxplot(width=.1, alpha=.5, position=position_dodge(.9)) +
+  stat_summary(fun=mean, geom="point", shape="diamond", size=3, color="black")
+
+violin_box_plot_2_cpu
+ggsave("graphs/violin/violin_box_plot_2_cpu.png", violin_box_plot_2_cpu)
+
+# Box-Violin Plot for Memory Consumption (2 minutes duration)
+violin_box_plot_2_memory <- ggplot(data = data_file_2, aes(x = app_type, y = memory, fill = app_type)) +
+  geom_violin() +
+  labs(x = "App Type", y = "Memory Usage[%]", title = "Memory Usage[%] for Electron vs. Web Apps for 8 minutes meeting") +
+  scale_fill_manual(values = c("electron" = "#5DADE2", "web" = "#F1948A")) +
+  geom_boxplot(width=.1, alpha=.5, position=position_dodge(.9)) +
+  stat_summary(fun=mean, geom="point", shape="diamond", size=3, color="black")
+
+violin_box_plot_2_memory
+ggsave("graphs/violin/violin_box_plot_2_memory.png", violin_box_plot_2_memory)
+
+# Box-Violin Plot for Network Consumption (2 minutes duration)
+violin_box_plot_2_network <- ggplot(data = data_file_2, aes(x = app_type, y = network, fill = app_type)) +
+  geom_violin() +
+  labs(x = "App Type", y = "Number of TCP & UDP Packets", title = "Network Packets for Electron vs. Web Apps for 8 minutes meeting") +
+  scale_fill_manual(values = c("electron" = "#5DADE2", "web" = "#F1948A")) +
+  geom_boxplot(width=.1, alpha=.5, position=position_dodge(.9)) +
+  stat_summary(fun=mean, geom="point", shape="diamond", size=3, color="black")
+
+violin_box_plot_2_network
+ggsave("graphs/violin/violin_box_plot_2_network.png", violin_box_plot_2_network)
 
 
 
 ## 8 mins duration
-# Box-Violin
+# Box-Violin - energy
 violin_box_plot_8_energy <- ggplot(data = data_file_8, aes(x = app_type, y = energy, fill = app_type)) +
   geom_violin() +
   labs(x = "App Type", y = "Energy Consumption [J]", title = "Energy Consumption for Electron vs. Web Apps for 8 minutes meeting") +
