@@ -251,7 +251,7 @@ violin_box_plot_2_energy
 ggsave("graphs/violin/violin_box_plot_2_energy.png", violin_box_plot_2_energy)
 
 # Box-Violin Plot for CPU Consumption (2 minutes duration)
-violin_box_plot_2_cpu <- ggplot(data = data_file_2, aes(x = app_type, y = cpu, fill = app_type)) +
+violin_box_plot_2_cpu <- ggplot(data = data_file_2, aes(x = app_type, y = (cpu*100), fill = app_type)) +
   geom_violin() +
   labs(x = "App Type", y = "CPU Usage[%]", title = "CPU Usage for Electron vs. Web Apps for 2 minutes meeting") +
   scale_fill_manual(values = c("electron" = "#5DADE2", "web" = "#F1948A")) +
@@ -298,7 +298,7 @@ violin_box_plot_8_energy
 ggsave("graphs/violin/violin_box_plot_8_energy.png", violin_box_plot_8_energy)
 
 # Box-Violin Plot for CPU Consumption (8 minutes duration)
-violin_box_plot_8_cpu <- ggplot(data = data_file_8, aes(x = app_type, y = cpu, fill = app_type)) +
+violin_box_plot_8_cpu <- ggplot(data = data_file_8, aes(x = app_type, y = (cpu*100), fill = app_type)) +
   geom_violin() +
   labs(x = "App Type", y = "CPU Usage[%]", title = "CPU Usage for Electron vs. Web Apps for 8 minutes meeting") +
   scale_fill_manual(values = c("electron" = "#5DADE2", "web" = "#F1948A")) +
